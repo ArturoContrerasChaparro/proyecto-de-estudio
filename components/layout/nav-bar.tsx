@@ -20,7 +20,7 @@ const NavBar = () => {
   const mobileLinkStyles = "flex w-full items-center py-4 text-lg font-semibold text-foreground border-b border-border/50 hover:text-primary transition-all";
 
   return (
-    <nav className="w-full border-b bg-background/95 backdrop-blur sticky top-0 z-50">
+    <nav className="w-full border-b bg-amber-100 backdrop-blur sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="text-foreground font-bold text-2xl md:text-3xl uppercase tracking-tighter">
           Arturo<span className="text-primary">.Dev</span>
