@@ -1,9 +1,9 @@
-
+import GeneradorFilas from "@/components/sections/estudiouno/generador-filas"
 
 const estudioUno = () => {
   return (
     <div>
-      Estudio 1
+      <GeneradorFilas />
     </div>
   )
 }
