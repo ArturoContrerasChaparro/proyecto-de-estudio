@@ -179,19 +179,21 @@ const GeneradorFilas = () => {
             Caclular
           </Button>
           <Button
+            variant="destructive"
             onClick={() => 
               {setListaDeInvitados([]) 
                setNumeroDeInvitados(0)
               }}>
             Resetear
           </Button>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6 w-full">
-          {listaDeInvitados.map((invitado, i) => (
-            <div key={i} className="p-3 bg-muted border rounded-md text-sm font-medium animate-in fade-in slide-in-from-left-2">
-              {invitado}
-            </div>
-          ))}
+        
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6 w-full">
+            {listaDeInvitados.map((invitado, i) => (
+              <div key={i} className="p-3 bg-muted border rounded-md text-sm font-medium animate-in fade-in slide-in-from-left-2">
+                {invitado}
+              </div>
+            ))}
+          </div>
         </div>
       </div>  
       
