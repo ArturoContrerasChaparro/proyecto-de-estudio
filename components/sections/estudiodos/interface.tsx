@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
 
 interface Products {
   id: number,
@@ -27,6 +28,7 @@ const Interface = () => {
   const productsWebFake = "https://fakestoreapi.com/products"
   
   const [products, setProducts] = useState<Products[]>([])
+  const [buscador, setBuscador] = useState("")
 
   useEffect(() => {
     const getProducts = async () => {
@@ -40,13 +42,31 @@ const Interface = () => {
     getProducts()
   },[])
 
+  const productFilter = 
+    products.filter(p =>
+      p.title.toLowerCase().includes(buscador.toLowerCase()) ||
+      p.category.toLowerCase().includes(buscador.toLowerCase())
+    )
+  
+
   
   return (
     <>
       <div className="p-6 border rounded-xl shadow-sm bg-card space-y-4">
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-pink-300">Interface</h1>  
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-pink-300">Interface</h1>
+
+        <div className="flex gap-3">  
+        <Input 
+          className="max-w-60"
+          placeholder="Buscar por nomber o categoría"
+          value={buscador === "" ? "" : buscador }
+          onChange={e => {
+            setBuscador(e.target.value)
+          }}
+        />
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {products.map(product => (
+          {productFilter.map(product => (
             <Card key={product.id} className="relative mx-auto w-full max-w-sm pt-0">
               <img
                 src={product.image}
