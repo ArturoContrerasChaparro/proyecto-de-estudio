@@ -43,7 +43,61 @@ const GeneradorFilas = () => {
     setNumeroMultiplicar(0)
     setListaNumeros([])
   }
+
+  //validador de correos
   
+
+  const validarCorreos = () => {
+    const correos = [ "arturo@gmail.com", "papu_desarrollador", "contacto@web.me", "admin_sin_arroba", "klaus.mikaelson@vampire.com" ];
+    for (let index = 0; index < correos.length; index++) {
+      const validarEmails = correos[index];
+      
+      if (validarEmails.includes("@")) {
+        console.log(`${validarEmails}: Es un correo real`);        
+      } else {
+        console.log(`${validarEmails}: Es un correo falso`);
+      }
+      
+    }
+  }
+  
+  validarCorreos()
+
+
+  // Calculador de presupuesto
+
+  const simuladorGasto = (presupuesto: number) => {
+    let presupuestoInicial = presupuesto
+    // let presupuestoMensual: string[] = []
+    for (let i = 1; i <= 6; i++) {
+      presupuestoInicial = presupuestoInicial - 200
+      console.log(`mes ${i} presupuesto: ${presupuestoInicial}`); 
+    }
+
+
+  }
+
+  simuladorGasto(2000)
+  simuladorGasto(500)
+
+
+  //calculador de impuestos
+
+  const [numeroDeInvitados, setNumeroDeInvitados] = useState(0)
+  const [listaDeInvitados, setListaDeInvitados] = useState<string[]>([])
+
+  const calcularImpuestos = (iva: number) => {
+    const invitadosLista: string[] = []
+    for (let i = 1; i <= numeroDeInvitados; i++) {
+      if (i % 10 === 0) {
+        invitadosLista.push(`felicidades ${i} debe: 0 pesos}`)
+      } else {
+      invitadosLista.push(`El invitado ${i} debe: ${(50 * (iva / 100)) + 50} pesos`)   
+      }   
+    }
+
+    setListaDeInvitados(invitadosLista)
+  }
   
   return (
     <>
@@ -106,6 +160,40 @@ const GeneradorFilas = () => {
           </div>    
         </div>
       </div>
+
+      {/** Calcular impuestos */}
+      <div className="p-6 border rounded-xl shadow-sm bg-card space-y-4">
+        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance text-pink-300">Calcular impuestos</h1>
+        <div className="flex gap-4 items-center">
+          <Input 
+            type="number"
+            placeholder="Número de invitados"
+            value={numeroDeInvitados === 0 ? "" : numeroDeInvitados}
+            className="max-w-50"
+            onChange={e => (
+              setNumeroDeInvitados(Number(e.target.value))
+            )}
+          />
+          <Button
+            onClick={() => calcularImpuestos(16)}>
+            Caclular
+          </Button>
+          <Button
+            onClick={() => 
+              {setListaDeInvitados([]) 
+               setNumeroDeInvitados(0)
+              }}>
+            Resetear
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6 w-full">
+          {listaDeInvitados.map((invitado, i) => (
+            <div key={i} className="p-3 bg-muted border rounded-md text-sm font-medium animate-in fade-in slide-in-from-left-2">
+              {invitado}
+            </div>
+          ))}
+        </div>
+      </div>  
       
     </>
   )
