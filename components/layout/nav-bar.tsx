@@ -9,8 +9,8 @@ interface NavLink {
 }
 
 const navigationLinks: NavLink[] = [
-  { label: "estudio 1", href: "/estudiouno" },
-  { label: "estudio 2", href: "/estudiodos" },
+  { label: "Ciclos", href: "/estudiouno" },
+  { label: "Interface", href: "/estudiodos" },
   { label: "estudio 3", href: "/estudiotres" },
   { label: "shadcn", href: "https://ui.shadcn.com/docs/components" }
 ];
