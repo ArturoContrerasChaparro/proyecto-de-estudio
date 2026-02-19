@@ -1,9 +1,9 @@
-
+import Interface from "@/components/sections/estudiodos/interface"
 
 const estudioDos = () => {
   return (
     <div>
-      Estudio 2
+      <Interface />
     </div>
   )
 }
